@@ -32,7 +32,7 @@ public class Pet {
     @JoinColumn(name = "request_id")
     private List<Request> requests;
 
-    public Pet(String name, String description, int age, Breed breed) {
+    public Pet(String name, String description, int age) {
         this.name = name;
         this.description = description;
         this.age = age;

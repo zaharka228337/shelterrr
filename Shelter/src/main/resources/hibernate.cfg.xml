@@ -9,11 +9,9 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">admin</property>
 
-
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
-
 
         <mapping class="com.example.Breed" />
         <mapping class="com.example.Shelter" />
@@ -21,5 +19,6 @@
         <mapping class="com.example.ApplicationShelterPet" />
         <mapping class="com.example.User" />
         <mapping class="com.example.Request" />
+
     </session-factory>
 </hibernate-configuration>

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Entity
 @Table(name = "users")
@@ -16,19 +17,22 @@ public class User {
     private String name;
     @Column(name = "user_address")
     private String address;
-    @Column(name = "email")
-    private String email;
+    @Column(name = "salary")
+    private String salary;
     @Column(name = "phone")
     private String phone;
     @OneToMany(mappedBy = "user")
     private List<Request> requests; // Список заявок
 
-    public User(String name, String address, String email, String phone) {
+    public User(String name, String address, String salary, String phone) {
         this.name = name;
         this.address = address;
-        this.email = email;
+        this.salary = salary;
         this.phone = phone;
-        this.requests = new ArrayList<>();
+    }
+
+    public User(){
+
     }
 
 // Геттеры и сеттеры для атрибутов
@@ -49,12 +53,12 @@ public class User {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSalary() {
+        return salary;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSalary(String salary) {
+        this.salary = salary;
     }
 
     public String getPhone() {

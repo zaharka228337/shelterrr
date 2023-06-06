@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/Shelter
+    username: postgres
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver

@@ -1,87 +1,54 @@
 package org.example;
 
 import org.hibernate.Session;
+import org.springframework.boot.SpringApplication;
 
+import java.sql.*;
+import java.util.Scanner;
 import java.util.List;
 
-public class Main
-{
+public class Main {
     public static void main(String[] args) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Была попытка создать сессию, но что-то пошло не так(
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        session.close();
-
-
-
-
-
-//        User user = new User("John Doe", "123 Main St", "john@example.com", "555-1234");
+//          UnitOfWork
+//        try (UnitOfWork unitOfWork = new UnitOfWork()) {
+//            // Получите подключение к базе данных из контекста
+//            Connection connection = unitOfWork.getConnection();
 //
-//        Request request1 = new Request("2023-05-29", "Pending");
-//        Request request2 = new Request("2023-05-30", "Approved");
+//            // Выполните необходимые операции с базой данных
 //
-//        user.addRequest(request1);
-//        user.addRequest(request2);
-//
-//        List<Request> userRequests = user.getRequests();
-//        System.out.println("Заявки пользователя " + user.getName() + ":");
-//        for (Request request : userRequests) {
-//            System.out.println("Дата: " + request.getDate() + ", Статус: " + request.getStatus());
+//            // Если все операции прошли успешно, подтвердите изменения
+//            unitOfWork.commit();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
 //        }
+        //  JSON
+        // Сериализация объекта в JSON
+//        User user = new User("Zakhar", "Lenina 92", "40", "8-983-150-59-10");
+//        String json = JsonFileUtils.serialize(user);
+//        System.out.println(json); // Вывод JSON-строки
 //
-//        // Создание объектов породы и питомца
-//        Breed breed = new Breed("Labrador Retriever");
-//        Pet pet = new Pet("Buddy", "Friendly and energetic", 3, breed);
+//        // Десериализация JSON в объект
+//        json = "{\"name\":\"Zakhar\",\"address\":\"Lenina 92\",\"salary\":\"40\",\"phone\":\"8-983-150-59-10\"}";
 //
-//// Добавление питомца в список питомцев породы
-//        breed.addPet(pet);
-//
-//// Вывод информации о питомце и его породе
-//        System.out.println("Питомец: Имя: " + pet.getName() + ", Описание: " + pet.getDescription() + ", Возраст: " + pet.getAge());
-//        System.out.println("Порода: Название: " + pet.getBreed().getName());
-//
-//// Вывод списка питомцев породы
-//        System.out.println("Порода: " + breed.getName() + ", Питомцы: " + breed.getPets().size());
-//
-//        // Создание объектов заявки, приюта и питомца
-//        Request request = new Request("2023-05-29", "Pending");
-//        PetShelter shelter = new PetShelter("123 Main St", "Pet Haven");
-//        Pet pet1 = new Pet("Fluffy", "Cute and playful", 2, breed);
-//
-//// Создание объекта связи между заявкой, приютом и питомцем
-//        ApplicationShelterPet application = new ApplicationShelterPet(request, shelter, pet1);
-//
-//// Добавление объекта заявки, приюта и питомца в соответствующие списки
-//        shelter.addRequest(request);
-//        shelter.addPet(pet1);
-//        request.addShelter(shelter);
-//        request.addPet(pet1);
-//        pet1.addShelter(shelter);
-//        pet1.addRequest(request);
-//
-//// Вывод информации о связанных объектах
-//        System.out.println("Заявка: Дата: " + request.getDate() + ", Статус: " + request.getStatus());
-//        System.out.println("Приют: Адрес: " + shelter.getAddress() + ", Питомник: " + shelter.getNursery());
-//        System.out.println("Питомец: Имя: " + pet1.getName() + ", Описание: " + pet1.getDescription() + ", Возраст: " + pet1.getAge());
-//
-//
+//        User deserializedUser = JsonFileUtils.deserialize(json, User.class);
+//        if (deserializedUser != null) {
+//            System.out.println(deserializedUser.getName());
+//            System.out.println(deserializedUser.getAddress());
+//            System.out.println(deserializedUser.getSalary());
+//            System.out.println(deserializedUser.getPhone());
+//        }
+            //API
+         SpringApplication.run(Main.class, args);
 
+         //  Фабрика репозиториев
+        String repositoryType = "XML"; // Здесь можно указать "XML" или "JSON"
 
+        Repository repository = RepositoryFactory.createRepository(repositoryType);
 
+        // Используем репозиторий для сохранения или получения данных
+        repository.save(new TestClassXml(/* Данные для сохранения */));
+        TestClassXml data = repository.get(/* Ключ или условие для получения данных */);
 
+        // Продолжаем работу с данными...
     }
 }
